@@ -83,7 +83,7 @@ function SearchPage() {
 
     useEffect(() => {
         populateList(undefined);
-    }, []);
+    });
 
     const populateList = (keyword: string | undefined) => {
         if (loading) {
