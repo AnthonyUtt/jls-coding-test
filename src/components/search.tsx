@@ -83,7 +83,8 @@ function SearchPage() {
 
     useEffect(() => {
         populateList(undefined);
-    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
     const populateList = (keyword: string | undefined) => {
         if (loading) {
@@ -100,7 +101,7 @@ function SearchPage() {
             };
         }
 
-        Axios.get('http://anthonyutt.pythonanywhere.com/products', config?config:undefined)
+        Axios.get('https://anthonyutt.pythonanywhere.com/products', config?config:undefined)
         .then(res => {
             setData(res.data);
             setLoading(false);

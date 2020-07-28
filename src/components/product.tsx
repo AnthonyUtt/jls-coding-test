@@ -100,7 +100,7 @@ const ProductPage = () => {
     useEffect(() => {
         if (!info) {
             Axios({
-                url: `http://anthonyutt.pythonanywhere.com/products/${id}`,
+                url: `https://anthonyutt.pythonanywhere.com/products/${id}`,
                 method: 'get',
             })
             .then(res => {
@@ -112,7 +112,7 @@ const ProductPage = () => {
 
         if (!locations) {
             Axios({
-                url: `http://anthonyutt.pythonanywhere.com/locations/${id}`,
+                url: `https://anthonyutt.pythonanywhere.com/locations/${id}`,
                 method: 'get',
             })
             .then(res => {
@@ -124,7 +124,7 @@ const ProductPage = () => {
 
         if (warehouses.length === 0) {
             Axios({
-                url: 'http://anthonyutt.pythonanywhere.com/warehouses',
+                url: 'https://anthonyutt.pythonanywhere.com/warehouses',
                 method: 'get',
             })
             .then(res => {
@@ -140,7 +140,7 @@ const ProductPage = () => {
         formData.set('source', `{ "warehouse": "1. Cores", "code":"${id}", "location":"${dest}" }`);
 
         Axios({
-            url: `http://anthonyutt.pythonanywhere.com/locations/${id}`,
+            url: `https://anthonyutt.pythonanywhere.com/locations/${id}`,
             method: 'post',
             headers: { 'Content-Type': 'multipart/form-data' },
             data: formData,
@@ -161,7 +161,7 @@ const ProductPage = () => {
         formData.set('dest', `{ "warehouse":"1. Cores", "code":"${id}", "location":"${dest}" }`);
 
         Axios({
-            url: "http://anthonyutt.pythonanywhere.com/transaction",
+            url: "https://anthonyutt.pythonanywhere.com/transaction",
             method: "post",
             headers: { 'Content-Type': 'multipart/form-data' },
             data: formData,
