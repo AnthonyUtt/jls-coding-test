@@ -56,7 +56,10 @@ type Locations = {
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     title: {
         flexGrow: 1,
@@ -76,8 +79,16 @@ const useStyles = makeStyles((theme) => ({
         listStyleType: 'none',
     },
     table: {
-        maxWidth: 480,
+        minWidth: 480,
     },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+    },
+    input: {
+
+    }
 }));
 
 const ProductPage = () => {
@@ -193,38 +204,40 @@ const ProductPage = () => {
             {info &&
             <div>
                 <h3>Product Info</h3>
-                <ul className={classes.list}>
-                    <li>Core Number: { info.CoreNumber }</li>
-                    <li>Internal Title: { info.InternalTitle }</li>
-                    <li>Vendor: { info.Vendor }</li>
-                    <li>Vendor Title: { info.VendorTitle }</li>
-                    <li>Vendor SKU: { info.VendorSKU }</li>
-                    <li>Backup Vendor: { info.BackupVendor }</li>
-                    <li>Backup Vendor SKU: { info.BackupVendorSKU }</li>
-                    <li>Restockable: { info.Restockable }</li>
-                    <li>Vendor Order Unit: { info.VendorOrderUnit }</li>
-                    <li>Vendor Case Pack: { info.VendorCasePack }</li>
-                    <li>MOQ: { info.MOQ }</li>
-                    <li>BufferDays: { info.BufferDays }</li>
-                    <li>Minimum Level: { info.MinimumLevel }</li>
-                    <li>Product URL: { info.ProductURL }</li>
-                    <li>Note For Next Order: { info.NoteForNextOrder }</li>
-                    <li>Case Pack: { info.CasePack }</li>
-                    <li>Pieces Per Internal Box: { info.PiecesPerInternalBox }</li>
-                    <li>Boxes Per Case: { info.BoxesPerCase }</li>
-                    <li>Tags &amp; Info: { info.TagsAndInfo }</li>
-                    <li>Tag 1: { info.Tag1 }</li>
-                    <li>Tag 2: { info.Tag2 }</li>
-                    <li>Tag 3: { info.Tag3 }</li>
-                    <li>Tag 4: { info.Tag4 }</li>
-                    <li>Hazmat: { info.Hazmat }</li>
-                    <li>Active: { info.Active }</li>
-                    <li>Ignore Until: { info.IgnoreUntil }</li>
-                    <li>Notes: { info.Notes }</li>
-                </ul>
+                <TableContainer>
+                    <TableBody>
+                        <TableRow><TableCell>Core Number</TableCell><TableCell>{ info.CoreNumber }</TableCell></TableRow>
+                        <TableRow><TableCell>Internal Title</TableCell><TableCell>{ info.InternalTitle }</TableCell></TableRow>
+                        <TableRow><TableCell>Vendor</TableCell><TableCell>{ info.Vendor }</TableCell></TableRow>
+                        <TableRow><TableCell>Vendor Title</TableCell><TableCell>{ info.VendorTitle }</TableCell></TableRow>
+                        <TableRow><TableCell>Vendor SKU</TableCell><TableCell>{ info.VendorSKU }</TableCell></TableRow>
+                        <TableRow><TableCell>Backup Vendor</TableCell><TableCell>{ info.BackupVendor }</TableCell></TableRow>
+                        <TableRow><TableCell>Backup Vendor SKU</TableCell><TableCell>{ info.BackupVendorSKU }</TableCell></TableRow>
+                        <TableRow><TableCell>Restockable</TableCell><TableCell>{ info.Restockable }</TableCell></TableRow>
+                        <TableRow><TableCell>Vendor Order Unit</TableCell><TableCell>{ info.VendorOrderUnit }</TableCell></TableRow>
+                        <TableRow><TableCell>Vendor Case Pack</TableCell><TableCell>{ info.VendorCasePack }</TableCell></TableRow>
+                        <TableRow><TableCell>MOQ</TableCell><TableCell>{ info.MOQ }</TableCell></TableRow>
+                        <TableRow><TableCell>BufferDays</TableCell><TableCell>{ info.BufferDays }</TableCell></TableRow>
+                        <TableRow><TableCell>Minimum Level</TableCell><TableCell>{ info.MinimumLevel }</TableCell></TableRow>
+                        <TableRow><TableCell>Product URL</TableCell><TableCell>{ info.ProductURL }</TableCell></TableRow>
+                        <TableRow><TableCell>Note For Next Order</TableCell><TableCell>{ info.NoteForNextOrder }</TableCell></TableRow>
+                        <TableRow><TableCell>Case Pack</TableCell><TableCell>{ info.CasePack }</TableCell></TableRow>
+                        <TableRow><TableCell>Pieces Per Internal Box</TableCell><TableCell>{ info.PiecesPerInternalBox }</TableCell></TableRow>
+                        <TableRow><TableCell>Boxes Per Case</TableCell><TableCell>{ info.BoxesPerCase }</TableCell></TableRow>
+                        <TableRow><TableCell>Tags &amp; Info</TableCell><TableCell>{ info.TagsAndInfo }</TableCell></TableRow>
+                        <TableRow><TableCell>Tag 1</TableCell><TableCell>{ info.Tag1 }</TableCell></TableRow>
+                        <TableRow><TableCell>Tag 2</TableCell><TableCell>{ info.Tag2 }</TableCell></TableRow>
+                        <TableRow><TableCell>Tag 3</TableCell><TableCell>{ info.Tag3 }</TableCell></TableRow>
+                        <TableRow><TableCell>Tag 4</TableCell><TableCell>{ info.Tag4 }</TableCell></TableRow>
+                        <TableRow><TableCell>Hazmat</TableCell><TableCell>{ info.Hazmat }</TableCell></TableRow>
+                        <TableRow><TableCell>Active</TableCell><TableCell>{ info.Active }</TableCell></TableRow>
+                        <TableRow><TableCell>Ignore Until</TableCell><TableCell>{ info.IgnoreUntil }</TableCell></TableRow>
+                        <TableRow><TableCell>Notes</TableCell><TableCell>{ info.Notes }</TableCell></TableRow>
+                    </TableBody>
+                </TableContainer>
                 <h3>Locations</h3>
                 <TableContainer component={Paper}>
-                    <Table className={classes.table}>
+                    <Table>
                         <TableHead>
                             <TableRow>
                                 <TableCell>Warehouse</TableCell>
@@ -257,7 +270,7 @@ const ProductPage = () => {
             (locations && locations.length > 0)
             ? <div>
                 <h4>Adjust Inventory Levels</h4>
-                <form onSubmit={createTransaction}>
+                <form className={classes.form} onSubmit={createTransaction}>
                     <label>Function: </label>
                     <select value={tType} onChange={(e) => setTType(e.target.value)}>
                         <option value="increment">Add</option>
@@ -289,7 +302,7 @@ const ProductPage = () => {
             </div>
             : <div>
                 <h4>Add Inventory</h4>
-                <form onSubmit={addInventory}>
+                <form className={classes.form} onSubmit={addInventory}>
                     <label>Location: </label>
                     <select value={dest} onChange={(e) => setDest(e.target.value)}>
                         <option disabled></option>
@@ -305,6 +318,7 @@ const ProductPage = () => {
                 </form>
             </div>
             }
+            <div style={{height: 100}} />
             </div>
         </div>
     )

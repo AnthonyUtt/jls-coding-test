@@ -95,6 +95,10 @@ const useStyles2 = makeStyles({
     table: {
         minWidth: 500,
     },
+    container: {
+        padding: 30,
+        boxSizing: 'border-box',
+    },
 });
 
 type TableProps = {
@@ -118,7 +122,7 @@ function InventoryTable({ data }: TableProps) {
     };
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className={classes.container}>
                 <Table className={classes.table} size="small" aria-label="Inventory table">
                     <TableHead>
                         <TableRow>
