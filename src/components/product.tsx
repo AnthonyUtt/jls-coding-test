@@ -166,7 +166,7 @@ const ProductPage = () => {
             headers: { 'Content-Type': 'multipart/form-data' },
             data: formData,
         })
-        .then((res) => console.log(res))
+        .then((res) => setLocations(undefined))
         .catch(err => console.error(err));
 
         e.preventDefault();
